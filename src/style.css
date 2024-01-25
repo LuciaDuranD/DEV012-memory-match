@@ -1,0 +1,19 @@
+.carta {
+  width: 100px;
+  height: 150px;
+  background-color: #ccc;
+  border: 1px solid #333;
+  margin: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.carta.oculta {
+  background-color: #fff;
+  color: transparent;
+}
+
+.carta.emparejada {
+  opacity: 0.5;
+  pointer-events: none;
+}

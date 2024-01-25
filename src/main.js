@@ -1,18 +1,15 @@
-import {
-  inicializarJuego,
-  renderizarCartas,
-  indicarVictoria,
-} from "./components/App.js";
+import { iniciarJuego, renderizarCartas } from "./components/App.js";
 import pokemon from "./data/pokemon/pokemon.js";
 
-const juegoContainer = document.createElement("div");
-juegoContainer.className = "juego-container";
+//ES EL DIV PRINCIPAL
+const juegoContenedor = document.createElement("div");
+juegoContenedor.className = "contenedor";
 
-// Inicializa el juego y obtén las cartas barajadas
-const cartasBarajadas = inicializarJuego(pokemon.items);
+// INICIAR JUEGO CON LAS CARTAS YA MEZCLADAS CON LA PROPIEDAD ITEM DE LA DATA
+const cartasBarajadas = iniciarJuego(pokemon.items);
 
-// Renderiza las cartas en el contenedor del juego
-renderizarCartas(cartasBarajadas, juegoContainer);
+// RENDERIZO LAS CARTAS EN EL CONTENDER LLAMANDO LA FUNCION DE MEZCLAR CARTAS
+renderizarCartas(cartasBarajadas, juegoContenedor);
 
-// Agrega el contenedor del juego al elemento con id 'root' en tu HTML
-document.getElementById("root").appendChild(juegoContainer);
+//AGREGO ROOT COMO HIJO AL CONTENEDOR
+document.getElementById("root").appendChild(juegoContenedor);
