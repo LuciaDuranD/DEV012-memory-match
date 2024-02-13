@@ -1,18 +1,38 @@
 import {
-  inicializarJuego,
+  duplicarCartas,
+  barajearCartas,
   renderizarCartas,
-  indicarVictoria,
 } from "./components/App.js";
+
 import pokemon from "./data/pokemon/pokemon.js";
 
-const juegoContainer = document.createElement("div");
-juegoContainer.className = "juego-container";
+const juegoContenedor = document.getElementById("root");
 
-// Inicializa el juego y obtén las cartas barajadas
-const cartasBarajadas = inicializarJuego(pokemon.items);
+const iniciarJuego = () => {
+  document.querySelectorAll(".carta-imagen").forEach((imagen) => {
+    imagen.style.display = "none";
+  });
 
-// Renderiza las cartas en el contenedor del juego
-renderizarCartas(cartasBarajadas, juegoContainer);
+  const cartasDuplicadas = duplicarCartas(pokemon.items);
+  const cartasBarajadas = barajearCartas(cartasDuplicadas);
 
-// Agrega el contenedor del juego al elemento con id 'root' en tu HTML
-document.getElementById("root").appendChild(juegoContainer);
+  renderizarCartas(cartasBarajadas, juegoContenedor);
+
+  ocultarCartasDespuesDeTiempo();
+};
+
+window.addEventListener("load", iniciarJuego);
+
+const ocultarCartasDespuesDeTiempo = () => {
+  setTimeout(() => {
+    document.querySelectorAll(".carta-imagen").forEach((imagen) => {
+      imagen.style.display = "none";
+    });
+  }, 2000);
+};
+
+const botonRepetir = document.getElementById("repetirJuego");
+
+botonRepetir.addEventListener("click", () => {
+  iniciarJuego();
+});
